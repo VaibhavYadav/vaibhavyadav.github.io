@@ -1,4 +1,4 @@
-title: Vaibhav Yadav
+title: Vaibhav Yadav's Blog
 email: vaibhavyadav025@gmail.com
 description: ""
 baseurl: ""
@@ -10,3 +10,7 @@ github_username:  VaibhavYadav
 theme: minima
 plugins:
   - jekyll-feed
+
+# Disqus Comments
+disqus:
+  shortname: vaibhavyadav

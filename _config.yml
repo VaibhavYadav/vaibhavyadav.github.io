@@ -1,0 +1,12 @@
+title: Vaibhav Yadav
+email: vaibhavyadav025@gmail.com
+description: ""
+baseurl: ""
+url: "https://vaibhavyadav.github.io/"
+# twitter_username: jekyllrb
+github_username:  VaibhavYadav
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed

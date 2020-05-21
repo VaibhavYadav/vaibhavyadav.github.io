@@ -1,1 +1,2 @@
-# vaibhavyadav.github.io
+# My Blog
+This is a repository for my blog.

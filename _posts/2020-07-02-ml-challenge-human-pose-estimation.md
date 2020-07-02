@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ML Challenge: Human Pose Estimation"
-date:   2020-05-20 20:00:00 +0530
+date:   2020-07-02 20:00:00 +0530
 ---
 In this project we will try to learn machine learning by applying it to predict human pose from a RGB image. Human pose estimation is an interesting area of machine learning with a lot of applications like.
 

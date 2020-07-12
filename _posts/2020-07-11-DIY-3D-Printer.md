@@ -10,7 +10,7 @@ A bigger objective is that I want to make a system where the printed objects hav
 
 ## The final printer
 ![Printer](/assets/3d_printer/printer.jpg)
-## Some test results
+## Some test prints
 ![Print](/assets/3d_printer/test1.jpg)
 ![Print](/assets/3d_printer/test2.jpg)
 

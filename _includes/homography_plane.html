@@ -1,0 +1,72 @@
+<div>
+    <div class="main-container">
+        <div class="box1">
+            <div class="box">
+            <div class="input">
+            <input type="range" min="-20", max="20", step="1", value="-5" id="rotation2_plane"/>
+            <label>Rotation Cam2</label>
+            </div>
+            </div>
+            <div class="box">
+            <div class="input">
+            <input type="range" min="-100", max="100", step="1", value="0" id="translation_plane"/>
+            <label>Translation Cam2</label>
+            </div>
+            </div>
+        </div>
+        <div class="box2">
+            <svg width="100%", height="500" id="vis_plane"></svg>
+        </div>
+    </div>
+    <script>
+        var svg = d3.select("#vis_plane")
+        var el = document.getElementById('vis_plane');
+        var rect = el.getBoundingClientRect();
+        var width = rect.width
+        var height = rect.height
+        // var width = 500
+        // var height = 500
+        console.log(width, height)
+        var camera_origin = [width * 0.1, height/2]
+        var focal_length = 100
+        var screen_size = 40
+        var plane_x = 0.98 * width
+        var D2R = Math.PI/180
+        // Draw Plane
+        svg.append("line")
+            .attr("x1", plane_x)
+            .attr("y1", 0)
+            .attr("x2", plane_x)
+            .attr("y2", height)
+            .style("stroke", "rgb(0, 0, 0)")
+            .style("stroke-width", 0.5)
+            // .style("mix-blend-mode", 'exclution')
+            // .style("stroke-opacity", 0.9)
+        camera3 = new Camera(camera_origin, 0, focal_length, screen_size, "rgb(0, 255,0)")
+        camera3.draw(svg)
+        camera4 = new Camera(camera_origin, -5, focal_length, screen_size, "rgb(255, 0, 0)")
+        camera4.draw(svg)
+        d3.select("#rotation2_plane").on("input", function() {
+            camera4.update(this.value, camera4.origin);
+        });
+        planer = true;
+        points = []
+        for(let i=0; i < 5; i++){
+            let x = plane_x
+            if(planer != true){
+                x = plane_x - Math.random() * 50
+            }
+            let y = height/2 + (Math.random() * 100 - 50)
+            points.push([x, y])
+        }
+        // points = [[plane_x, height/2 - 10], [plane_x - 60, height/2 - 30], [plane_x - 50, height/2]]
+        // projections = new drawPointProjections(camera3.origin, camera4.origin, [[plane_x, 400], [plane_x - 60, 380], [plane_x - 50, 300]])
+        projections_plane = new drawPointProjections(camera3.origin, camera4.origin, points)
+        projections_plane.draw(svg)
+        d3.select("#translation_plane").on("input", function() {
+            new_pos = [camera_origin[0], camera_origin[1] + Number(this.value)]
+            camera4.update(camera4.rotation * 1/D2R, new_pos)
+            projections_plane.update(new_pos)   
+        });
+</script>
+</div>
